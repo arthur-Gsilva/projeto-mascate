@@ -7,9 +7,9 @@ export const TableGrid = () => {
   const halfIndex = Math.ceil(tables.length / 2);
 
   return (
-    <div className="w-full flex flex-col justify-around items-center py-4 sm:flex-row">
-        <div className="grid grid-cols-3 gap-3 md:grid-cols-2">
-            {tables.slice(0, halfIndex).map((item) => (
+    <div className="w-full flex flex-col justify-around items-center py-4 gap-10 md:flex-row md:gap-0">
+        <div className="grid grid-cols-4 gap-5 sm:grid-cols-3">
+            {tables.map((item) => (
             <div
                 key={item.id}
                 className="text-xl flex flex-col items-center"
@@ -21,10 +21,14 @@ export const TableGrid = () => {
                     color:
                     item.status === 'busy'
                         ? 'red'
+                        : item.status === 'reserved'
+                        ? 'blue'
                         : item.status === 'selected'
                         ? 'green'
                         : 'white',
-                    cursor: item.status !== 'busy' ? 'pointer' : 'initial'
+                    // cursor: item.status !== 'busy' ? 'pointer' : 'initial',
+                    cursor: item.status === "available" ? 'pointer' : 'initial'
+                    
                 }}
                 />
                 {item.id}
@@ -32,34 +36,30 @@ export const TableGrid = () => {
             ))}
         </div>
 
-        <div className="flex flex-col gap-4 py-4 ">
+        <div className="flex flex-col  gap-5 text-md md:text-xl">
+            <div className="flex items-center gap-2">
+                <MdOutlineTableBar />
+                Vazias
+            </div>
+            <div className="flex items-center gap-2">
+                <MdOutlineTableBar className="text-[#FF0000]"/>
+                Ocupadas
+            </div>
+            <div className="flex items-center gap-2">
+                <MdOutlineTableBar className="text-[#008000]"/>
+                Selecionada
+            </div>
+            <div className="flex items-center gap-2">
+                <MdOutlineTableBar className="text-[#4253EC]"/>
+                Reservadas
+            </div>
+        </div>
+
+        <div className="flex flex-row gap-4 py-4 md:flex-col">
             <QuantityGrid title="Pessoas" />
             <QuantityGrid title="Pratos" />
         </div>
 
-        <div className="grid grid-cols-3 gap-3 md:grid-cols-2">
-            {tables.slice(halfIndex).map((item) => (
-            <div
-                key={item.id}
-                className="text-xl flex flex-col items-center"
-                onClick={() => selectTable(item.id)}
-            >
-                <MdOutlineTableBar
-                className="text-2xl sm:text-3xl md:text-4xl"
-                style={{
-                    color:
-                    item.status === 'busy'
-                        ? 'red'
-                        : item.status === 'selected'
-                        ? 'green'
-                        : 'white',
-                    cursor: item.status !== 'busy' ? 'pointer' : 'initial'
-                }}
-                />
-                {item.id}
-            </div>
-            ))}
-        </div>
         </div>
     );
 };

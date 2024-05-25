@@ -3,7 +3,7 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 type Table = {
     id: number;
-    status: 'available' | 'busy' | 'selected';
+    status: 'available' | 'busy' | 'selected' | 'reserved';
 };
 
 type OrderContextType = {
@@ -26,11 +26,11 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         { id: 2, status: 'available' },
         { id: 4, status: 'busy' },
         { id: 5, status: 'busy' },
-        { id: 6, status: 'available' },
+        { id: 6, status: 'reserved' },
         { id: 7, status: 'available' },
         { id: 8, status: 'busy' },
         { id: 9, status: 'available' },
-        { id: 10, status: 'busy' },
+        { id: 10, status: 'reserved' },
         { id: 11, status: 'available' },
         { id: 12, status: 'busy' },
         { id: 13, status: 'busy' },

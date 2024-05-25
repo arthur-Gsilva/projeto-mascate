@@ -4,6 +4,7 @@ import { TableGrid } from "@/components/TableGrid";
 import { Button } from "@/components/ui/button";
 import { useOrder } from "@/contexts/OrderContext";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -13,6 +14,16 @@ const order = () => {
     const router = useRouter()
     const { tables, numberOfPeople, dishes, setClickTime } = useOrder();
     const selectedTable = tables.find((table) => table.status === 'selected');
+
+    const [disabled, setDisabled] = useState<boolean>(true)
+
+    useEffect(() => {
+        if(selectedTable?.id && numberOfPeople > 0 && dishes > 0){
+            setDisabled(false)
+        } else{
+            setDisabled(true)
+        }
+    }, [tables, numberOfPeople, dishes])
 
     const handleClick = () => {
         setClickTime();
@@ -33,18 +44,18 @@ const order = () => {
                     <TableGrid />
                 </div>
 
-                {selectedTable?.id && numberOfPeople > 0 && dishes > 0 &&
-                    <div className="absolute w-full flex justify-center items-center">
-                        <Button
-                            className="rounded-full"
-                            variant="secondary"
-                            size="lg"
-                            onClick={handleClick}
-                        >
-                            <FaLongArrowAltRight />
-                        </Button>
-                    </div>
-                }
+                <div className="absolute w-full flex justify-center items-center">
+                    <Button
+                        className="rounded-full"
+                        variant="secondary"
+                        size="lg"
+                        onClick={handleClick}
+                        disabled={disabled}
+                    >
+                        <FaLongArrowAltRight />
+                    </Button>
+                </div>
+                
 
                 
                 
