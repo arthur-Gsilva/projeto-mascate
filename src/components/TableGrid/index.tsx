@@ -7,8 +7,8 @@ export const TableGrid = () => {
   const halfIndex = Math.ceil(tables.length / 2);
 
   return (
-    <div className="w-full flex flex-col justify-around items-center py-4 gap-10 md:flex-row md:gap-0">
-        <div className="grid grid-cols-4 gap-5 sm:grid-cols-3">
+    <div className="w-full flex flex-col justify-around items-center py-4 gap-10 ">
+        <div className="grid grid-cols-4 gap-5">
             {tables.map((item) => (
             <div
                 key={item.id}
@@ -55,7 +55,7 @@ export const TableGrid = () => {
             </div>
         </div>
 
-        <div className="flex flex-row gap-4 py-4 md:flex-col">
+        <div className="flex flex-row gap-4 py-4">
             <QuantityGrid title="Pessoas" />
             <QuantityGrid title="Pratos" />
         </div>
