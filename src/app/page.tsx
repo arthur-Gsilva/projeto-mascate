@@ -43,7 +43,6 @@ const Page = () => {
                                         autoFocus
                                         placeholder="Apenas números"
                                         {...field}
-                                        className="text-black"
                                     />
                                 </FormControl>
                                 <FormMessage />

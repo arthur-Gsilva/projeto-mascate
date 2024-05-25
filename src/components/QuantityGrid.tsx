@@ -12,9 +12,9 @@ export const QuantityGrid = ({ title }: Props) => {
   const quantity = title === 'Pessoas' ? numberOfPeople : dishes;
 
   const increaseQuantity = () => {
-    if (title === 'Pessoas') {
+    if (title === 'Pessoas' && numberOfPeople < 6) {
       setNumberOfPeople(numberOfPeople + 1);
-    } else {
+    } else if(title === 'Pratos' && dishes < 10) {
       setDishes(dishes + 1);
     }
   };
@@ -28,7 +28,7 @@ export const QuantityGrid = ({ title }: Props) => {
   };
 
   return (
-    <div className="text-center bg-slate-200/65 p-3 pb-7 rounded-md">
+    <div className="text-center bg-slate-200/65 p-3 pb-7 rounded-xl">
       <h4 className="mb-4">{title}</h4>
       <div className="flex items-center gap-4">
         <Button size="icon" className="size-4 md:size-6" onClick={decreaseQuantity}>
