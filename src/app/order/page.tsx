@@ -31,10 +31,10 @@ const order = () => {
     };
 
     return(
-        <div className="container w-full h-full flex justify-center items-center flex-col text-white gap-4 py-3 pl-0 pr-0">
+        <div className="container w-full h-full flex justify-center items-center flex-col text-black gap-4 py-3 pl-0 pr-0">
             <h2 className="text-2xl">Escolha sua mesa!</h2>
 
-            <div className="bg-primary w-3/4 rounded-xl pb-6 relative md:w-1/2">
+            <div className="bg-gray-50 w-3/4 rounded-xl pb-6 relative md:w-1/2">
                 <div className="mb-4 flex justify-center items-center flex-col p-2">
                     <p>Você está aqui</p>
                     <FaRegUser className=""/>

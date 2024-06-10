@@ -28,7 +28,7 @@ export const QuantityGrid = ({ title }: Props) => {
   };
 
   return (
-    <div className="text-center bg-slate-200/65 p-3 pb-7 rounded-xl">
+    <div className="text-center bg-slate-300 p-3 pb-7 rounded-xl">
       <h4 className="mb-4">{title}</h4>
       <div className="flex items-center gap-4">
         <Button size="icon" className="size-4 md:size-6" onClick={decreaseQuantity}>

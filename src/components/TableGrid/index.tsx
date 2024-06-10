@@ -1,4 +1,4 @@
-import { MdOutlineTableBar } from "react-icons/md";
+import { MdTableBar } from "react-icons/md";
 import { QuantityGrid } from "@/components/QuantityGrid";
 import { useOrder } from "@/contexts/OrderContext";
 
@@ -15,7 +15,7 @@ export const TableGrid = () => {
                 className="text-xl flex flex-col items-center"
                 onClick={() => selectTable(item.id)}
             >
-                <MdOutlineTableBar
+                <MdTableBar
                 className="text-2xl sm:text-3xl md:text-4xl"
                 style={{
                     color:
@@ -25,7 +25,7 @@ export const TableGrid = () => {
                         ? 'blue'
                         : item.status === 'selected'
                         ? 'green'
-                        : 'white',
+                        : 'black',
                     // cursor: item.status !== 'busy' ? 'pointer' : 'initial',
                     cursor: item.status === "available" ? 'pointer' : 'initial'
                     
@@ -38,19 +38,19 @@ export const TableGrid = () => {
 
         <div className="flex flex-col  gap-5 text-md md:text-xl">
             <div className="flex items-center gap-2">
-                <MdOutlineTableBar />
+                <MdTableBar className="text-black"/>
                 Vazias
             </div>
             <div className="flex items-center gap-2">
-                <MdOutlineTableBar className="text-[#FF0000]"/>
+                <MdTableBar className="text-[#FF0000]"/>
                 Ocupadas
             </div>
             <div className="flex items-center gap-2">
-                <MdOutlineTableBar className="text-[#008000]"/>
+                <MdTableBar className="text-[#008000]"/>
                 Selecionada
             </div>
             <div className="flex items-center gap-2">
-                <MdOutlineTableBar className="text-[#4253EC]"/>
+                <MdTableBar className="text-[#4253EC]"/>
                 Reservadas
             </div>
         </div>
