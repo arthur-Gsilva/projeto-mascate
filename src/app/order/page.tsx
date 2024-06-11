@@ -12,7 +12,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 const order = () => {
 
     const router = useRouter()
-    const { tables, numberOfPeople, dishes, setClickTime } = useOrder();
+    const { tables, numberOfPeople, dishes, setClickTime, setBusyTable } = useOrder();
     const selectedTable = tables.find((table) => table.status === 'selected');
 
     const [disabled, setDisabled] = useState<boolean>(true)
@@ -34,7 +34,7 @@ const order = () => {
         <div className="container w-full h-full flex justify-center items-center flex-col text-black gap-4 py-3 pl-0 pr-0">
             <h2 className="text-2xl">Escolha sua mesa!</h2>
 
-            <div className="bg-gray-50 w-3/4 rounded-xl pb-6 relative md:w-1/2">
+            <div className="bg-gray-50 w-3/4 rounded-xl pb-6 mb-10 relative md:w-1/2">
                 <div className="mb-4 flex justify-center items-center flex-col p-2">
                     <p>Você está aqui</p>
                     <FaRegUser className=""/>
@@ -44,7 +44,7 @@ const order = () => {
                     <TableGrid />
                 </div>
 
-                <div className="absolute w-full flex justify-center items-center">
+                <div className="absolute w-full flex justify-center items-center pb-6">
                     <Button
                         className="rounded-full"
                         variant="secondary"

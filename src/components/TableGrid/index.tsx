@@ -4,7 +4,6 @@ import { useOrder } from "@/contexts/OrderContext";
 
 export const TableGrid = () => {
   const { tables, selectTable } = useOrder();
-  const halfIndex = Math.ceil(tables.length / 2);
 
   return (
     <div className="w-full flex flex-col justify-around items-center py-4 gap-10 ">
@@ -26,7 +25,6 @@ export const TableGrid = () => {
                         : item.status === 'selected'
                         ? 'green'
                         : 'black',
-                    // cursor: item.status !== 'busy' ? 'pointer' : 'initial',
                     cursor: item.status === "available" ? 'pointer' : 'initial'
                     
                 }}
@@ -36,7 +34,7 @@ export const TableGrid = () => {
             ))}
         </div>
 
-        <div className="flex flex-col  gap-5 text-md md:text-xl">
+        <div className="flex flex-col  gap-5 text-md md:text-2xl">
             <div className="flex items-center gap-2">
                 <MdTableBar className="text-black"/>
                 Vazias

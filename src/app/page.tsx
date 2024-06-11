@@ -27,7 +27,7 @@ const Page = () => {
     }
 
     return(
-        <div className="container w-full h-full flex justify-center items-center flex-col text-white gap-4">
+        <div className="container min-w-screen min-h-screen flex justify-center items-center flex-col text-white gap-4">
             <h2 className="text-2xl">Bem-Vindo!</h2>
             <h1 className="text-3xl">Pegue sua comanda</h1>
             <Form {...form}>

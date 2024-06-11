@@ -15,7 +15,8 @@ type OrderContextType = {
     setDishes: (num: number) => void;
     selectTable: (index: number) => void;
     clickTime: Date | null,
-    setClickTime: () => void
+    setClickTime: () => void,
+    setBusyTable: () => void
 };
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -24,16 +25,20 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     const [tables, setTables] = useState<Table[]>([
         { id: 1, status: 'available' },
         { id: 2, status: 'available' },
+        { id: 3, status: 'available' },
         { id: 4, status: 'busy' },
-        { id: 5, status: 'busy' },
-        { id: 6, status: 'reserved' },
-        { id: 7, status: 'available' },
-        { id: 8, status: 'busy' },
-        { id: 9, status: 'available' },
-        { id: 10, status: 'reserved' },
+        { id: 5, status: 'reserved' },
+        { id: 6, status: 'available' },
+        { id: 7, status: 'busy' },
+        { id: 8, status: 'available' },
+        { id: 9, status: 'reserved' },
+        { id: 10, status: 'available' },
         { id: 11, status: 'available' },
         { id: 12, status: 'busy' },
-        { id: 13, status: 'busy' },
+        { id: 13, status: 'available' },
+        { id: 14, status: 'busy' },
+        { id: 15, status: 'available' },
+        { id: 16, status: 'available' },
     ]);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const [dishes, setDishes] = useState(0);
@@ -58,8 +63,16 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         );
     };
 
+    const setBusyTable = () => {
+        setTables((prevTables) =>
+          prevTables.map((table) =>
+            table.status === 'selected' ? { ...table, status: 'busy' } : table
+          )
+        );
+      };
+
   return (
-    <OrderContext.Provider value={{ tables, numberOfPeople, dishes, setTables, setNumberOfPeople, setDishes, selectTable, clickTime, setClickTime: handleClick }}>
+    <OrderContext.Provider value={{ tables, numberOfPeople, dishes, setTables, setNumberOfPeople, setDishes, selectTable, clickTime, setClickTime: handleClick, setBusyTable }}>
       {children}
     </OrderContext.Provider>
   );

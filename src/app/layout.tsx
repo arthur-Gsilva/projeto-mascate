@@ -31,7 +31,7 @@ export default function RootLayout({
 
         <OrderProvider>
             <div className="min-h-screen min-w-screen bg-center bg-cover bg-no-repeat bg-[url(/images/bg.webp)]">
-                <div className="h-screen w-screen bg-black/75">
+                <div className="min-h-screen min-w-screen bg-black/75">
                     {children}
                 </div>
             </div>
