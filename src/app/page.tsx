@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 
 import { z } from 'zod'
@@ -22,9 +23,14 @@ const Page = () => {
         defaultValues: {cpf: ''}
     })
 
+    const [active, setActive] = useState(true)
+
     const onSubmit = (values: z.infer<typeof formSchema>) => {
+        setActive(!active)
         router.push('/order')
     }
+
+    
 
     return(
         <div className="container min-w-screen min-h-screen flex justify-center items-center flex-col text-white gap-4">
@@ -43,6 +49,7 @@ const Page = () => {
                                         autoFocus
                                         placeholder="Apenas números"
                                         {...field}
+                                        disabled={!active}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -50,7 +57,7 @@ const Page = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Próximo</Button>
+                    <Button type="submit" disabled={!active}>Próximo</Button>
                 </form>
             </Form>
         </div>

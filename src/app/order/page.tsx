@@ -8,29 +8,28 @@ import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
+const Order = () => {
+    const router = useRouter();
+    const { state, dispatch } = useOrder();
+    const { tables, numberOfPeople, dishes } = state;
 
-const order = () => {
-
-    const router = useRouter()
-    const { tables, numberOfPeople, dishes, setClickTime, setBusyTable } = useOrder();
     const selectedTable = tables.find((table) => table.status === 'selected');
-
-    const [disabled, setDisabled] = useState<boolean>(true)
+    const [disabled, setDisabled] = useState<boolean>(true);
 
     useEffect(() => {
-        if(selectedTable?.id && numberOfPeople > 0 && dishes > 0){
-            setDisabled(false)
-        } else{
-            setDisabled(true)
+        if (selectedTable?.id && numberOfPeople > 0 && dishes > 0) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
         }
-    }, [tables, numberOfPeople, dishes])
+    }, [tables, numberOfPeople, dishes]);
 
     const handleClick = () => {
-        setClickTime();
-        router.push('/completed')
+        dispatch({ type: 'SET_CLICK_TIME', clickTime: new Date() });
+        router.push('/completed');
     };
 
-    return(
+    return (
         <div className="container w-full h-full flex justify-center items-center flex-col text-black gap-4 py-3 pl-0 pr-0">
             <h2 className="text-2xl">Escolha sua mesa!</h2>
 
@@ -54,16 +53,10 @@ const order = () => {
                     >
                         <FaLongArrowAltRight />
                     </Button>
-                </div>
-                
-
-                
-                
+                </div>   
             </div>
-
-            
         </div>
-    )
+    );
 }
 
-export default order;
+export default Order;
