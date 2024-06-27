@@ -1,11 +1,13 @@
-export const Tables = [
+import { Table } from "@/types/Table";
+
+export const Tables: Table[] = [
     {
         id: 1,
         status: 'available'
     },
     {
         id: 2,
-        status: 'busy'
+        status: 'available'
     },
     {
         id: 3,
@@ -45,7 +47,23 @@ export const Tables = [
     },
     {
         id: 12,
+        status: 'reserved'
+    },
+    {
+        id: 13,
         status: 'busy'
+    },
+    {
+        id: 14,
+        status: 'reserved'
+    },
+    {
+        id: 15,
+        status: 'available'
+    },
+    {
+        id: 16,
+        status: 'available'
     },
 
 ]

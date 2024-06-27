@@ -1,7 +1,6 @@
-type Table = {
-    id: number;
-    status: 'available' | 'busy' | 'selected' | 'reserved';
-};
+import { Table } from "@/types/Table";
+import { Tables } from "@/utils/tables";
+
 
 export type State = {
     tables: Table[];
@@ -23,24 +22,7 @@ export type Action =
     | { type: 'DECREASE_DISHES' };
 
 export const initialState: State = {
-    tables: [
-        { id: 1, status: 'available' },
-        { id: 2, status: 'available' },
-        { id: 3, status: 'available' },
-        { id: 4, status: 'busy' },
-        { id: 5, status: 'reserved' },
-        { id: 6, status: 'available' },
-        { id: 7, status: 'busy' },
-        { id: 8, status: 'available' },
-        { id: 9, status: 'reserved' },
-        { id: 10, status: 'available' },
-        { id: 11, status: 'available' },
-        { id: 12, status: 'busy' },
-        { id: 13, status: 'available' },
-        { id: 14, status: 'busy' },
-        { id: 15, status: 'available' },
-        { id: 16, status: 'available' },
-    ],
+    tables: Tables,
     numberOfPeople: 1,
     dishes: 0,
     clickTime: null,
